@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SoftElegant — Product Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- SVG logo -->
+        <svg class="logo" viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <defs>
+            <linearGradient id="g2" x1="0" x2="1">
+              <stop offset="0" stop-color="#c7b9ff"/>
+              <stop offset="1" stop-color="#8b5cf6"/>
+            </linearGradient>
+          </defs>
+          <rect x="6" y="6" width="52" height="52" rx="12" fill="url(#g2)"></rect>
+          <path d="M20 36c4-6 12-6 16 0" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" />
+        </svg>
+
+        <div class="brand-text">
+          <div class="brand-name">SoftElegant</div>
+          <div class="brand-sub">Product Manager</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-export" class="btn subtle" type="button">Export CSV</button>
+        <button id="btn-clear-storage" class="btn subtle" type="button">Reset Storage</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- FORM -->
+    <section class="panel form-panel">
+      <h2>Tambah / Edit Produk</h2>
+
+      <form id="productForm" class="form-grid" autocomplete="off">
+        <div class="field">
+          <label for="name">Nama Produk</label>
+          <input id="name" name="name" type="text" placeholder="Nama produk..." required />
+        </div>
+
+        <div class="field">
+          <label for="price">Harga (Rp)</label>
+          <input id="price" name="price" type="number" min="0" placeholder="100000" required />
+        </div>
+
+        <div class="field">
+          <label for="stock">Stok</label>
+          <input id="stock" name="stock" type="number" min="0" placeholder="10" />
+        </div>
+
+        <div class="field">
+          <label for="category">Kategori</label>
+          <input id="category" name="category" type="text" placeholder="Elektronik / Fashion" />
+        </div>
+
+        <div class="field">
+          <label for="badge">Badge</label>
+          <select id="badge" name="badge">
+            <option value="">None</option>
+            <option value="New">New</option>
+            <option value="Sale">Sale</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="image">Gambar Produk (opsional)</label>
+          <input id="image" name="image" type="file" accept="image/*" />
+          <div id="imgPreview" class="img-preview">Preview</div>
+        </div>
+
+        <div class="actions" style="grid-column: 1 / -1; display:flex; gap:10px;">
+          <button id="addBtn" type="submit" class="btn primary">Tambah Produk</button>
+          <button id="saveBtn" type="button" class="btn primary" style="display:none">Simpan Perubahan</button>
+          <button id="resetForm" type="button" class="btn subtle">Reset Form</button>
+          <button id="showAll" type="button" class="btn subtle">Tampilkan Semua</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- LIST + CONTROLS -->
+    <section class="panel list-panel">
+      <div class="controls">
+        <div class="search">
+          <input id="searchInput" type="text" placeholder="Cari berdasarkan nama..." />
+          <button id="searchBtn" class="btn" type="button">Cari</button>
+          <button id="clearSearch" class="btn subtle" type="button">Reset</button>
+        </div>
+
+        <div class="sort">
+          <label for="sortKey">Sort by</label>
+          <select id="sortKey">
+            <option value="name">Nama</option>
+            <option value="price">Harga</option>
+          </select>
+          <select id="sortOrder">
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+          </select>
+          <button id="sortBtn" class="btn" type="button">Urutkan</button>
+        </div>
+      </div>
+
+      <div id="listWrap">
+        <div id="cards" class="grid-cards"></div>
+
+        <table id="table" class="hidden">
+          <thead>
+            <tr><th>Nama</th><th>Harga</th><th>Stok</th><th>Kategori</th><th>Aksi</th></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">SoftElegant • Demo Toko — Soft & Elegant UI</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
